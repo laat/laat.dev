@@ -8,10 +8,28 @@ const posts = (await getCollection("blog")).sort(
 );
 ---
 
-<BaseLayout title="laat.dev" description="A simple static blog">
-  <h1>laat.dev</h1>
-  <p>A simple static blog.</p>
+<BaseLayout title="laat.dev" description="Sigurd Fosseng's developer blog">
+  <h1>Sigurd Fosseng</h1>
+  <nav class="social">
+    <a href="https://github.com/laat">github</a>
+    <a href="https://laat.yapping.no">bluesky</a>
+  </nav>
   <section>
     {posts.map((post) => <BlogPostCard post={post} />)}
   </section>
 </BaseLayout>
+
+<style>
+  .social {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .social a {
+    color: #8b949e;
+    text-decoration: none;
+  }
+  .social a:hover {
+    color: #58a6ff;
+  }
+</style>
