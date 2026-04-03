@@ -35,8 +35,4 @@ MCP server exposes `memory_search`, `memory_read`, `memory_create`. Hook it up t
 
 ---
 
-Personal project. My workflow, my opinions. Bug fixes welcome, feature PRs not. It's MIT — fork it. Read the [CONTRIBUTING.md](https://github.com/laat/mor/blob/main/CONTRIBUTING.md) before you get ideas.
-
-[GitHub](https://github.com/laat/mor)
-
-For laughs, check out [mor's homepage](https://mor.laat.dev). Made soaking with irony.
+Personal project. My workflow, my opinions. [GitHub](https://github.com/laat/mor). For laughs, check out [mor's homepage](https://mor.laat.dev). Made soaking with irony.
