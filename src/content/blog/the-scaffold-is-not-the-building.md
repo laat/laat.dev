@@ -40,7 +40,7 @@ The first version earned its keep by teaching you what to write. It still does n
 
 A clean-slate rewrite is not a return to ignorance. It is the first attempt made by someone who now knows the shape of the thing.
 
-What survives across attempts is the structure. A feature that survives three bad implementations is probably real. An abstraction that keeps reappearing in different forms, despite your efforts to organise the system around something else, is probably the one the problem wanted all along. When the scaffold comes down and the same lines still remain, those are the lines of the building.
+What survives across attempts is structural. A feature that survives three bad implementations is real. An abstraction that keeps reappearing despite your efforts to organise around something else — that is the one the problem wanted. When the scaffold comes down and the same lines remain, those are the lines of the building.
 
 The clean slate is for the artifact, not the author. The author keeps the knowledge. The artifact sheds the accidents.
 
