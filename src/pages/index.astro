@@ -9,7 +9,10 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <BaseLayout title="laat.dev" description="Sigurd Fosseng's developer blog">
-  <h1>Sigurd Fosseng</h1>
+  <div class="profile">
+    <img src="/snusmumriken-ai.png" alt="Profile picture" class="avatar" />
+    <h1>Sigurd Fosseng</h1>
+  </div>
   <nav class="social">
     <a href="https://github.com/laat">github</a>
     <a href="https://laat.yapping.no">bluesky</a>
@@ -20,6 +23,20 @@ const posts = (await getCollection("blog")).sort(
 </BaseLayout>
 
 <style>
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .profile h1 {
+    margin: 0;
+  }
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
   .social {
     display: flex;
     gap: 1rem;
