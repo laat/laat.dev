@@ -11,12 +11,14 @@ const posts = (await getCollection("blog")).sort(
 <BaseLayout title="laat.dev" description="Sigurd Fosseng's developer blog">
   <div class="profile">
     <img src="/snusmumriken-ai.png" alt="Profile picture" class="avatar" />
-    <h1>Sigurd Fosseng</h1>
+    <div>
+      <h1>Sigurd Fosseng</h1>
+      <nav class="social">
+        <a href="https://github.com/laat">github</a>
+        <a href="https://laat.yapping.no">bluesky</a>
+      </nav>
+    </div>
   </div>
-  <nav class="social">
-    <a href="https://github.com/laat">github</a>
-    <a href="https://laat.yapping.no">bluesky</a>
-  </nav>
   <section>
     {posts.map((post) => <BlogPostCard post={post} />)}
   </section>
