@@ -30,7 +30,7 @@ Once the load-bearing elements are visible, the temporary structure has done its
 
 So take it down.
 
-Start again from a cleaner description of what the thing is. Not what you first suspected it might be, not what the exploratory code happened to make convenient, but what the probe taught you. The second pass has an unfair advantage: it already knows where the weight goes. It can put supports where supports belong. It can leave empty what should remain empty.
+Start again from a cleaner understanding of what the thing is. Not what you first suspected it might be, not what the exploratory code happened to make convenient, but what the probe taught you. The second pass has an unfair advantage: it already knows where the weight goes. It can put supports where supports belong. It can leave empty what should remain empty.
 
 The first version earned its keep by teaching you what to write. It still does not get to ship.
 
