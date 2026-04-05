@@ -32,6 +32,7 @@ const posts = (await getCollection("blog")).sort(
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 2rem;
   }
   .profile h1 {
     margin: 0;
@@ -55,5 +56,12 @@ const posts = (await getCollection("blog")).sort(
   }
   .social a:hover {
     color: #58a6ff;
+  }
+  section {
+    margin: 0;
+    padding: 0;
+  }
+  section :global(article:first-child a) {
+    padding-top: 0;
   }
 </style>
