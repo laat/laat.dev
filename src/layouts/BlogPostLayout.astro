@@ -19,17 +19,21 @@ const formattedPubDate = pubDate.toLocaleDateString("en-us", {
   <article>
     <header>
       <h1>{title}</h1>
+      <div class="author">
+        <img src="/snusmumriken-ai.png" alt="Sigurd Fosseng" class="author-avatar" />
+        <span>Sigurd Fosseng</span>
+      </div>
       <div class="meta">
-        <time datetime={pubDate.toISOString()}>Published: {formattedPubDate}</time>
+        <time datetime={pubDate.toISOString()}>{formattedPubDate}</time>
         {
           updatedDate && (
             <time datetime={updatedDate.toISOString()}>
-              Updated:{" "}
+              (updated{" "}
               {updatedDate.toLocaleDateString("en-us", {
                 year: "numeric",
                 month: "short",
                 day: "numeric",
-              })}
+              })})
             </time>
           )
         }
@@ -43,10 +47,28 @@ const formattedPubDate = pubDate.toLocaleDateString("en-us", {
   article header {
     margin-bottom: 2rem;
   }
+  article header h1 {
+    margin-bottom: 0.25rem;
+  }
+  .author {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #e6edf3;
+    margin-bottom: 0.25rem;
+  }
+  .author-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
   .meta {
     font-size: 0.9rem;
     color: #8b949e;
     display: flex;
     gap: 1rem;
+    margin-left: calc(28px + 0.5rem);
   }
 </style>
