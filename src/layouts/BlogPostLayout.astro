@@ -46,8 +46,14 @@ const formattedPubDate = pubDate.toLocaleDateString("en-us", {
 </BaseLayout>
 
 <style>
+  article {
+    text-align: justify;
+    hyphens: auto;
+    text-wrap: pretty;
+  }
   article header {
     margin-bottom: 2rem;
+    text-align: left;
   }
   article header h1 {
     margin-bottom: 0.25rem;
