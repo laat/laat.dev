@@ -16,6 +16,7 @@ const siteTitle = "laat.dev";
     <title>{title === siteTitle ? title : `${title} | ${siteTitle}`}</title>
     {description && <meta name="description" content={description} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="laat.dev" href="/rss.xml" />
     <link rel="canonical" href={Astro.url} />
   </head>
   <body>
