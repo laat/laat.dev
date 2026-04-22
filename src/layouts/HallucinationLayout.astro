@@ -1,15 +1,13 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { Image } from "astro:assets";
 import BaseLayout from "./BaseLayout.astro";
-import avatar from "../assets/snusmumriken-ai.png";
 
 interface Props {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<"hallucinations">;
 }
 
 const { post } = Astro.props;
-const { title, description, pubDate, updatedDate } = post.data;
+const { title, description, pubDate, updatedDate, model } = post.data;
 const formattedPubDate = pubDate.toLocaleDateString("en-us", {
   year: "numeric",
   month: "short",
@@ -17,14 +15,13 @@ const formattedPubDate = pubDate.toLocaleDateString("en-us", {
 });
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} noindex>
   <article>
     <header>
       <h1>{title}</h1>
-      <div class="author">
-        <Image src={avatar} alt="Sigurd Fosseng" width={56} class="author-avatar" />
-        <span>Sigurd Fosseng</span>
-      </div>
+      <p class="notice">
+        This post was written by {model ? `${model}` : "an AI"} from a conversation with Sigurd Fosseng.
+      </p>
       <div class="meta">
         <time datetime={pubDate.toISOString()}>{formattedPubDate}</time>
         {
@@ -56,25 +53,16 @@ const formattedPubDate = pubDate.toLocaleDateString("en-us", {
   article header h1 {
     margin-bottom: 0.25rem;
   }
-  .author {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  .notice {
     font-size: 0.9rem;
-    color: #e6edf3;
-    margin-bottom: 0.25rem;
-  }
-  .author-avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    object-fit: cover;
+    color: #8b949e;
+    font-style: italic;
+    margin: 0.25rem 0;
   }
   .meta {
     font-size: 0.9rem;
     color: #8b949e;
     display: flex;
     gap: 1rem;
-    margin-left: calc(28px + 0.5rem);
   }
 </style>

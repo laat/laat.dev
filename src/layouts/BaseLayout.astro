@@ -2,9 +2,10 @@
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex } = Astro.props;
 const siteTitle = "laat.dev";
 ---
 
@@ -15,8 +16,10 @@ const siteTitle = "laat.dev";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title === siteTitle ? title : `${title} | ${siteTitle}`}</title>
     {description && <meta name="description" content={description} />}
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title="laat.dev" href="/rss.xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
     <link rel="canonical" href={Astro.url} />
   </head>
   <body>
@@ -84,6 +87,12 @@ const siteTitle = "laat.dev";
     padding: 1rem 2rem;
   }
 
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
   nav a {
     text-decoration: none;
     color: inherit;
@@ -92,6 +101,15 @@ const siteTitle = "laat.dev";
   .site-title {
     font-size: 1.25rem;
     font-weight: 600;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    color: #8b949e;
+  }
+
+  .nav-link:hover {
+    color: #58a6ff;
   }
 
   main {
@@ -111,5 +129,40 @@ const siteTitle = "laat.dev";
 
   h1 {
     border-bottom: none;
+  }
+
+  .katex-display {
+    margin: 0.5em 0;
+  }
+
+  .formula-compare {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .formula-compare .katex-display {
+    margin: 0;
+  }
+
+  .formula-compare pre {
+    margin: 0;
+  }
+
+  @media (min-width: 40rem) {
+    .formula-compare {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .formula-compare .katex-display {
+      flex-shrink: 0;
+    }
+
+    .formula-compare pre {
+      flex: 1;
+      min-width: 0;
+    }
   }
 </style>

@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import HallucinationLayout from "../../layouts/HallucinationLayout.astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection("hallucinations");
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<HallucinationLayout post={post}>
+  <Content />
+</HallucinationLayout>

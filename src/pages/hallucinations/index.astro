@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPostCard from "../../components/BlogPostCard.astro";
+
+const posts = (await getCollection("hallucinations")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="Hallucinations" description="A window into my conversations with AI" noindex>
+  <div class="section-header">
+    <h1>Hallucinations</h1>
+    <p>a window into my conversations with AI</p>
+  </div>
+  <section>
+    {posts.map((post) => <BlogPostCard post={post} collection="hallucinations" />)}
+  </section>
+</BaseLayout>
+
+<style>
+  .section-header {
+    margin-bottom: 2rem;
+  }
+  .section-header h1 {
+    margin-bottom: 0.25rem;
+  }
+  .section-header p {
+    color: #8b949e;
+    font-style: italic;
+    margin: 0;
+  }
+  section {
+    margin: 0;
+    padding: 0;
+  }
+  section :global(article:first-child a) {
+    padding-top: 0;
+  }
+</style>

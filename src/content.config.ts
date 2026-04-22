@@ -11,4 +11,15 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const hallucinations = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/hallucinations" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    model: z.string().optional(),
+  }),
+});
+
+export const collections = { blog, hallucinations };

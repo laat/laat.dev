@@ -2,10 +2,11 @@
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<"blog"> | CollectionEntry<"hallucinations">;
+  collection?: "blog" | "hallucinations";
 }
 
-const { post } = Astro.props;
+const { post, collection = "blog" } = Astro.props;
 const { title, pubDate, description } = post.data;
 const formattedDate = pubDate.toLocaleDateString("en-us", {
   year: "numeric",
@@ -15,7 +16,7 @@ const formattedDate = pubDate.toLocaleDateString("en-us", {
 ---
 
 <article>
-  <a href={`/blog/${post.id}/`}>
+  <a href={`/${collection}/${post.id}/`}>
     <h2>{title}</h2>
     <time datetime={pubDate.toISOString()}>{formattedDate}</time>
     <p>{description}</p>
