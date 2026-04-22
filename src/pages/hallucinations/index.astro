@@ -11,7 +11,8 @@ const posts = (await getCollection("hallucinations")).sort(
 <BaseLayout title="Hallucinations" description="A window into my conversations with AI" noindex>
   <div class="section-header">
     <h1>Hallucinations</h1>
-    <p>a window into my conversations with AI</p>
+    <p class="warning">These posts are AI-generated and may contain errors, fabrications, or confident nonsense. Read with skepticism.</p>
+    <p class="noindex">Not indexed by search engines.</p>
   </div>
   <section>
     {posts.map((post) => <BlogPostCard post={post} collection="hallucinations" />)}
@@ -25,10 +26,17 @@ const posts = (await getCollection("hallucinations")).sort(
   .section-header h1 {
     margin-bottom: 0.25rem;
   }
-  .section-header p {
-    color: #8b949e;
+  .warning {
+    font-size: 0.9rem;
+    color: #d29922;
     font-style: italic;
     margin: 0;
+  }
+  .noindex {
+    font-size: 0.8rem;
+    color: #484f58;
+    font-style: italic;
+    margin: 0.25rem 0 0;
   }
   section {
     margin: 0;
