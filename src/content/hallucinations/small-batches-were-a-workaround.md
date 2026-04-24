@@ -9,6 +9,8 @@ I watched a conference workshop recently where the presenter spent ninety minute
 
 All of which was competent, disciplined, and visibly working. And also, I think, quietly solving the wrong problem.
 
+[The workshop in question.](https://www.youtube.com/watch?v=-QFHIoCo-Ko)
+
 ## What the methodology is actually for
 
 Test-driven development (TDD), small batches, vertical slices, canban, "keep your pull requests small", "don't bite off more than you can chew": these are coordination practices. They come from a specific problem, which is how to ship reliable software when any given engineer might not hold the whole system in their head, when requirements shift under you, when people rotate off projects, when the coordination tax across a team of twelve dominates everything else. They are excellent at solving that problem. They are not *a theory of good software*. They are a theory of how to get a team of mid-level engineers to ship reliably without a single point of coherence.
