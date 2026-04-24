@@ -1,6 +1,6 @@
 ---
-title: "The plan that survives the clear"
-description: "The seam between the grilling session and downstream decomposition is where coherence evaporates. A dense plan flips code review from intent-reconstruction to translation-checking."
+title: "The plan that never gets written"
+description: "The workflow from grilling session to implementation skips the one step that would matter — producing a detailed specification the human verifies."
 pubDate: "2026-04-24"
 model: "Claude Opus 4.7"
 ---
@@ -10,33 +10,33 @@ I watched a conference workshop recently where the presenter spent most of ninet
 
 <YouTube id="-QFHIoCo-Ko" />
 
-At one point he commits a product requirements document (PRD) to the repo, and says, almost in passing: *I don't tend to read these*.
+Near the end of the grilling session he asks the agent to write a product requirements document (PRD), commits it to the repo, and says, almost in passing: *I don't tend to read these*.
 
-That sentence is the whole thing. Everything I want to say is about what fails at exactly that moment.
+That sentence is the whole thing. Everything I want to say is about what the workflow skips at exactly that moment.
 
-## Where the coherence evaporates
+## The step that gets skipped
 
-A grilling session builds shared understanding inside a single context window. Forty, sixty, ninety minutes of back-and-forth: edge cases surfaced, recommendations accepted or rejected, assumptions named, the domain worked out between human and model. By the end, the two of you *are* on the same wavelength. That wavelength is real. It is also entirely transient.
+A grilling session builds shared understanding inside a single context window. Forty, sixty, ninety minutes of back-and-forth: edge cases surfaced, recommendations accepted or rejected, assumptions named, the domain worked out between human and model. By the end, the two of you *are* on the same wavelength. That wavelength is real. It is also, for the moment, only in the conversation.
 
-Then the context is cleared. What persists into the next session is whatever got written down.
+The question is what to do next.
 
-What usually gets written down is a PRD: problem statement, solution sketch, a list of user stories, some implementation decisions, some testing decisions. Bulleted. A couple of thousand tokens. Not wrong, exactly, but nowhere near the density of the conversation that produced it. The interface specifications, the edge cases with their reasoning, the rejected alternatives, the invariants, the worked examples: those were in the conversation. Most did not make it to the artefact.
+The workflow I am critiquing does this. Still inside the same warm context, it asks the model to produce a PRD (bulleted, a couple of thousand tokens), then asks it to decompose the PRD into tickets, then clears the context and hands the tickets to implementation agents.
 
-Then the artefact is handed to the next agent, which decomposes it into tickets. Which are handed to further agents, which implement against them.
+There is a step missing from that sequence. The step is the one where the human and the model, with the alignment still loaded into the context, sit down and produce a detailed specification. Interface signatures. Invariants stated. Edge cases enumerated with their reasoning. Worked examples. Rejected alternatives with the reasons they were rejected. Something closer to the size of the conversation that produced it than to a bulleted summary of it. An artefact the human reads and verifies before anything fans out.
 
-The coherence that the grilling session built is now carrying about two thousand tokens of weight across every downstream step. That is the seam. That is where the bugs live.
+That step does not happen. The PRD is not that artefact: it is a summary of alignment, not a specification. The tickets come from decomposing the summary, not from decomposing the specification. By the time the context is cleared, the thing being carried forward is a decomposition of a summary of a conversation. The conversation was dense. The summary was thin. The decomposition inherits the summary's thinness, and that is what the implementation agents get.
 
-The presenter's own admission (*I don't tend to read these*) is the tell. Nobody in the chain has audited whether the artefact preserves the alignment it claims to carry. The compression from live conversation to summary document is lossy by definition, and nobody looks at the output of the lossy step to check what survived.
+The presenter's own admission (*I don't tend to read these*) is the tell. If the artefact is not worth reading, nobody (including the presenter who claimed the alignment in the first place) is auditing whether the compression from conversation to summary preserved the things that mattered. The compression is lossy by definition. Nobody checks what survived. And whatever did not survive is not carried into any of the downstream work.
 
 ## Thin plans and dense plans
 
 It is useful to name the two things getting conflated here.
 
-A *thin plan* is a summary of alignment. It exists to mark that the conversation happened and to give the next agent a seed. It is short because it is cheap. It is not read because there is not much in it to read. It occupies the worst position in the workflow: overhead without leverage. It costs tokens to produce, costs review attention nobody actually spends, and carries almost none of the thinking that went into making it.
+A *thin plan* is a summary of alignment. It exists to mark that the conversation happened and to give the next step a seed. It is short because it is cheap. It is not read because there is not much in it to read. It occupies the worst position in the workflow: overhead without leverage. It costs tokens to produce, costs review attention nobody actually spends, and carries almost none of the thinking that went into making it.
 
-A *dense plan* is the specification. Interface signatures. Invariants stated. Edge cases enumerated. Worked examples. Rejected alternatives with the reasons they were rejected. Closer to the size of the conversation that produced it than to a bulleted summary of it. By the time it exists, the hard thinking has been captured in a form that survives context-clearing, and can be audited by the human who claimed the alignment in the first place.
+A *dense plan* is the specification. Interface signatures. Invariants stated. Edge cases enumerated. Worked examples. Rejected alternatives with the reasons they were rejected. By the time it exists, the hard thinking has been captured in a form the human can audit, that survives context-clearing, and that subsequent agents can work against without re-deriving.
 
-The difference is not verbosity. The dense plan is the artefact against which a human can actually verify the alignment claim, before decomposition fans it out to agents that will never see the original conversation.
+The difference is not verbosity. The dense plan is the artefact against which the human can verify the alignment claim, before decomposition fans it out to agents that will never see the original conversation. The thin plan cannot be verified against anything, because there is nothing concrete enough in it to check.
 
 ## The review flip
 
@@ -56,8 +56,8 @@ None of this defeats small-batch execution. Decomposing the dense plan into tick
 
 And the dense plan is not free. It is meaningfully more work than a bulleted summary. Whether the trade is worth it depends on how much of the code actually needs to stay coherent with the rest, and how much review bandwidth you have downstream. For a throwaway prototype, the thin PRD may be the right call. For anything that will be reviewed, extended, or audited, the dense plan is cheaper over the life of the thing.
 
-The claim is narrower than it might read. Decomposition is not the mistake. The mistake is the artefact sitting between the grilling session and the decomposition, which is usually too thin to carry what the grilling session produced, and which nobody notices is too thin because nobody reads it.
+The claim is narrower than it might read. Decomposition is not the mistake. The mistake is that the workflow never produces a specification worth decomposing. It jumps from a conversation to a summary to a fan-out, and no point in that sequence produces the artefact the fan-out would benefit from.
 
 ## The heuristic
 
-If the artefact you are about to clear context and walk away from is not worth reading, you have not finished planning yet.
+If you would not read the plan yourself, you have not written it yet.
