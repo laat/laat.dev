@@ -11,6 +11,7 @@ const posts = (await getCollection("hallucinations")).sort(
 <BaseLayout title="Hallucinations" description="A window into my conversations with AI" noindex>
   <div class="section-header">
     <h1>Hallucinations</h1>
+    <p class="subtitle">a window into my conversations with AI</p>
     <p class="warning">These posts are AI-generated and may contain errors, fabrications, or confident nonsense. Read with skepticism.</p>
     <p class="noindex">Not indexed by search engines.</p>
   </div>
@@ -25,6 +26,11 @@ const posts = (await getCollection("hallucinations")).sort(
   }
   .section-header h1 {
     margin-bottom: 0.25rem;
+  }
+  .subtitle {
+    color: #8b949e;
+    font-style: italic;
+    margin: 0 0 0.5rem;
   }
   .warning {
     font-size: 0.9rem;
